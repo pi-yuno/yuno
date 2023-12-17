@@ -5,7 +5,7 @@ import os
 import discord
 from discord.ext import commands
 
-prefix = ["do ", "Do ", "<@1185650759287713843>"]
+prefix = ["do ", "Do ", "<@1185650759287713843> "]
 
 intents = discord.Intents.all()
 
