@@ -45,4 +45,4 @@ async def react(ctx, *args):
         embed.set_footer(text=bot.user.name, icon_url=bot.user.avatar)
         await ctx.reply(embed=embed)
         return
-    await ctx.reply(f"`ERROR: No reactions found {args[0]}`\ntry\t`?anime h|help` !")
+    await ctx.reply(f"`ERROR: No reactions found {args[0]}`\ntry\t`h|help`")
