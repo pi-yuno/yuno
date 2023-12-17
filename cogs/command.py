@@ -1,7 +1,7 @@
 import random
 import discord
 import requests
-from cogs import application
+from cogs import application, headers
 from discord.ext import commands
 
 bot = application.bot
@@ -25,7 +25,8 @@ async def purge_err(ctx, error):
 
 @bot.command()
 async def react(ctx, *args):
-    reactions = ['airkiss', 'angrystare', 'bite', 'bleh', 'blush', 'brofist', 'celebrate', 'cheers', 'clap', 'confused', 'cool', 'cry', 'cuddle', 'dance', 'drool', 'evillaugh', 'facepalm', 'handhold', 'happy', 'headbang', 'hug', 'kiss', 'laugh', 'lick', 'love', 'mad', 'nervous', 'no', 'nom', 'nosebleed', 'nuzzle', 'nyah', 'pat', 'peek', 'pinch', 'poke', 'pout', 'punch', 'roll', 'run', 'sad', 'scared', 'shout', 'shrug', 'shy', 'sigh', 'sip', 'slap', 'sleep', 'slowclap', 'smack', 'smile', 'smug', 'sneeze', 'sorry', 'stare', 'stop', 'surprised', 'sweat', 'thumbsup', 'tickle', 'tired', 'wave', 'wink', 'woah', 'yawn', 'yay', 'yes']
+    reactions = headers.reactions
+    print(reactions)
     if len(args) == 0:
         reaction = random.choice(reactions)
         embed = discord.Embed(title=None,description=reaction,color=0xfeadc3)
@@ -35,7 +36,7 @@ async def react(ctx, *args):
         return
     if args[0] in reactions:
         embed = discord.Embed(title=None,description=args[0],colour=0xfeadc3)
-        data = await fetch_json(f"https://api.otakugifs.xyz/gif?reaction={args[0]}")
+        data = await requests.get(f"https://api.otakugifs.xyz/gif?reaction={args[0]}").json()
         embed.set_image(url=data["url"])
         await ctx.send(embed=embed)
         return
