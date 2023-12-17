@@ -26,7 +26,6 @@ async def purge_err(ctx, error):
 @bot.command()
 async def react(ctx, *args):
     reactions = headers.reactions
-    print(reactions)
     if len(args) == 0:
         reaction = random.choice(reactions)
         embed = discord.Embed(title=None,description=reaction,color=0xfeadc3)
@@ -36,7 +35,7 @@ async def react(ctx, *args):
         return
     if args[0] in reactions:
         embed = discord.Embed(title=None,description=args[0],colour=0xfeadc3)
-        data = await requests.get(f"https://api.otakugifs.xyz/gif?reaction={args[0]}").json()
+        data = requests.get(f"https://api.otakugifs.xyz/gif?reaction={args[0]}").json()
         embed.set_image(url=data["url"])
         await ctx.send(embed=embed)
         return
