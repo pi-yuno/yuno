@@ -1,4 +1,3 @@
-import os
 from cogs import command, headers
 from cogs.message import _message
 from cogs.message_edit import _message_edit

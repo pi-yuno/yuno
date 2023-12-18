@@ -1,2 +1,2 @@
 async def _message_edit(before, after):
-    print(before, after)
+    pass
