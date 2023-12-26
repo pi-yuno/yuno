@@ -38,13 +38,13 @@ async def _ball(ctx):
         await message.edit(content=str(f"```\n{display.render()}\n```"))
         await asyncio.sleep(0.5)
     print("hello")
-    await message.edit(content="Game Over!")
+    await message.edit(content="`[ Game Over! ]`")
 
 @bot.command()
 async def ballz(ctx, arg = None):
     global _ball_mode
     if arg == "auth":
-        _list = "currnet authors: "
+        _list = "players: "
         for user, mode in _ball_mode.items():
             if mode:
                 _list += f"`{user.name}`\t"
