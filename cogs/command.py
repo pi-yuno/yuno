@@ -26,25 +26,28 @@ async def purge_err(ctx, error):
         await ctx.reply("not allowed!")
 
 global _ball_mode
-_ball_mode = False
-async def _ball(message):
+_ball_mode = dict()
+async def _ball(ctx):
+    message = await ctx.send("Starting....")
     ball = Ball(15, 8)
     display = Display()
-    while _ball_mode:
+    while _ball_mode[ctx.author]:
         x, y = ball.play()
         display.clear()
         display.draw(x, y)
         await message.edit(content=str(f"```\n{display.render()}\n```"))
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.5)
 
 @bot.command()
 async def ballz(ctx, mode:str):
     global _ball_mode
-    _ball_mode = True
+    _ball_mode[ctx.author] = True
     if mode == "off":
-        _ball_mode = False
+        _ball_mode[ctx.author] = False
+        await ctx.reply("stopped..!")
+        return
     message = await ctx.send("Starting....")
-    await _ball(message)
+    await _ball(ctx)
 
 @bot.command()
 async def update(ctx):
