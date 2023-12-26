@@ -37,13 +37,11 @@ async def _ball(ctx):
         display.draw(x, y)
         await message.edit(content=str(f"```\n{display.render()}\n```"))
         await asyncio.sleep(0.5)
-    else:
-        await message.edit("Game Over!")
+    await message.edit("Game Over!")
 
 @bot.command()
 async def ballz(ctx, arg = None):
     global _ball_mode
-    _ball_mode[ctx.author] = True
     if arg == "auth":
         _list = "currnet authors: "
         for user, mode in _ball_mode.items():
