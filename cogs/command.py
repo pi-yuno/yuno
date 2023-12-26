@@ -37,13 +37,16 @@ async def _ball(ctx):
         display.draw(x, y)
         await message.edit(content=str(f"```\n{display.render()}\n```"))
         await asyncio.sleep(0.5)
+    else:
+        await message.edit("Game Over!")
 
 @bot.command()
 async def ballz(ctx, arg = None):
     global _ball_mode
     _ball_mode[ctx.author] = True
-    if arg == "authors":
+    if arg == "auth":
         await ctx.reply(str(_ball_mode))
+        return
     if arg == "off":
         if ctx.author in _ball_mode and _ball_mode[ctx.author]:
             _ball_mode[ctx.author] = False
@@ -52,7 +55,6 @@ async def ballz(ctx, arg = None):
         else:
             await ctx.reply("no games running by you!")
             return
-    message = await ctx.send("Starting....")
     await _ball(ctx)
 
 @bot.command()
