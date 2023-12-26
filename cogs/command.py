@@ -1,6 +1,7 @@
 import random
 import discord
 import requests
+import asyncio
 from cogs import application, headers
 from discord.ext import commands
 from cogs.brick import Display, Ball
@@ -34,6 +35,7 @@ async def _ball(message):
         display.clear()
         display.draw(x, y)
         await message.edit(content=str(f"```\n{display.render()}\n```"))
+        await asyncio.sleep(1)
 
 @bot.command()
 async def ballz(ctx, mode:str):
@@ -43,6 +45,10 @@ async def ballz(ctx, mode:str):
         _ball_mode = False
     message = await ctx.send("Starting....")
     await _ball(message)
+
+@bot.command()
+async def update(ctx):
+    await bot.close()
 
 @bot.command()
 async def react(ctx, *args):

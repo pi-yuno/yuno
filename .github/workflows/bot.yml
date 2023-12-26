@@ -22,5 +22,9 @@ jobs:
 
     - name: Logging bot
       run: |
-        YUNO=${{secrets.YUNO}} python3 bot.py
+        while true
+        do
+          YUNO=${{secrets.YUNO}} python3 bot.py
+          git pull
+        done
 
