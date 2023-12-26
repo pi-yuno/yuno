@@ -3,14 +3,16 @@ import os
 import time
 
 class Display:
-    def __init__(self):
-        self.display = [[" "] * 16 for _ in range(9)]
+    def __init__(self, width, height):
+        self.height = height
+        self.width = width
+        self.display = [["⬛"] * self.width for _ in range(self.height)]
 
     def draw(self, x, y):
         self.display[x][y] = "🏐"
 
     def clear(self):
-        self.display = [["⬛"] * 16 for _ in range(9)]
+        self.display = [["⬛"] * self.width for _ in range(self.height)]
     def render(self):
         result = ""
         for x in self.display:
