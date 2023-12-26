@@ -48,10 +48,9 @@ async def ballz(ctx, arg = None):
         _list = "currnet authors: "
         for user, mode in _ball_mode.items():
             if mode:
-                _list += f"```{user.name}```\n"
+                _list += f"`{user.name}`\t"
             else:
-                _list += f"{user.name}\n"
-            pass
+                _list += f"{user.name}\t"
         await ctx.reply(_list)
         return
     if arg == "off":
@@ -62,6 +61,7 @@ async def ballz(ctx, arg = None):
         else:
             await ctx.reply("no games running by you!")
             return
+    _ball_mode[ctx.author] = True
     await _ball(ctx)
 
 @bot.command()
