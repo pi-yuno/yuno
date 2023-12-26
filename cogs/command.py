@@ -39,10 +39,12 @@ async def _ball(ctx):
         await asyncio.sleep(0.5)
 
 @bot.command()
-async def ballz(ctx, mode = None):
+async def ballz(ctx, arg = None):
     global _ball_mode
     _ball_mode[ctx.author] = True
-    if mode == "off":
+    if arg == "authors":
+        await ctx.reply(str(_ball_mode))
+    if arg == "off":
         if ctx.author in _ball_mode and _ball_mode[ctx.author]:
             _ball_mode[ctx.author] = False
             await ctx.reply("stopped..!")
