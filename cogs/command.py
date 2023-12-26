@@ -37,7 +37,8 @@ async def _ball(ctx):
         display.draw(x, y)
         await message.edit(content=str(f"```\n{display.render()}\n```"))
         await asyncio.sleep(0.5)
-    await message.edit("Game Over!")
+    print("hello")
+    await message.edit(content="Game Over!")
 
 @bot.command()
 async def ballz(ctx, arg = None):
