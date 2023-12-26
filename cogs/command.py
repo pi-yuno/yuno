@@ -45,7 +45,14 @@ async def ballz(ctx, arg = None):
     global _ball_mode
     _ball_mode[ctx.author] = True
     if arg == "auth":
-        await ctx.reply(str(_ball_mode))
+        _list = "currnet authors: "
+        for user, mode in _ball_mode.items():
+            if mode:
+                _list += f"```{user.name}```\n"
+            else:
+                _list += f"{user.name}\n"
+            pass
+        await ctx.reply(_list)
         return
     if arg == "off":
         if ctx.author in _ball_mode and _ball_mode[ctx.author]:
