@@ -3,6 +3,7 @@ import discord
 import requests
 from cogs import application, headers
 from discord.ext import commands
+from cogs.brick import Display, Ball
 
 bot = application.bot
 
@@ -22,6 +23,26 @@ async def purge(ctx, limit: int):
 async def purge_err(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.reply("not allowed!")
+
+global _ball_mode
+_ball_mode = False
+async def _ball(message):
+    ball = Ball(15, 8)
+    display = Display()
+    while _ball_mode:
+        x, y = ball.play()
+        display.clear()
+        display.draw(x, y)
+        await message.edit(content=str(f"```\n{display.render()}\n```"))
+
+@bot.command()
+async def ballz(ctx, mode:str):
+    global _ball_mode
+    _ball_mode = True
+    if mode == "off":
+        _ball_mode = False
+    message = await ctx.send("Starting....")
+    await _ball(message)
 
 @bot.command()
 async def react(ctx, *args):
