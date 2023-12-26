@@ -43,9 +43,13 @@ async def ballz(ctx, mode:str):
     global _ball_mode
     _ball_mode[ctx.author] = True
     if mode == "off":
-        _ball_mode[ctx.author] = False
-        await ctx.reply("stopped..!")
-        return
+        if ctx.author in _ball_mode:
+            _ball_mode[ctx.author] = False
+            await ctx.reply("stopped..!")
+            return
+        else:
+            await ctx.reply("no games running by you!")
+            return
     message = await ctx.send("Starting....")
     await _ball(ctx)
 
