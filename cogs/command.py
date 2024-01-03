@@ -40,6 +40,12 @@ async def _ball(ctx):
     await message.edit(content="`[ Game Over! ]`")
 
 @bot.command()
+@commands.has_permissions(administrator=True)
+async def annoy(ctx, user:discord.Member):
+    while True:
+        await user.send("cocksucker..")
+        await ctx.reply(f"annoying {user.mention}")
+@bot.command()
 async def ballz(ctx, arg = None):
     global _ball_mode
     if arg == "auth":
