@@ -5,8 +5,14 @@ import asyncio
 from cogs import application, headers
 from discord.ext import commands
 from cogs.brick import Display, Ball
+from cogs.view import TTToe
 
 bot = application.bot
+
+
+@bot.command()
+async def ttt(ctx):
+    await ctx.send(view=TTToe())
 
 @bot.command()
 @commands.is_owner()
@@ -38,6 +44,12 @@ async def _ball(ctx):
         await message.edit(content=str(f"```\n{display.render()}\n```"))
         await asyncio.sleep(0.5)
     await message.edit(content="`[ Game Over! ]`")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def slowmode(ctx, channel:discord.TextChannel, seconds: int):
+    await channel.edit(slowmode_delay=seconds)
+    await ctx.reply(f"Slowmode in {channel} is set to {seconds} seconds")
 
 @bot.command()
 @commands.has_permissions(administrator=True)
