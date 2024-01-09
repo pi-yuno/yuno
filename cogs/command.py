@@ -1,4 +1,5 @@
 import os
+import json
 import random
 import discord
 import requests
@@ -11,27 +12,16 @@ from cogs.view import TTToe
 bot = application.bot
 
 
-# @bot.command()
-async def sticker(ctx, mode = None, name = None, imurl = None):
-    if mode in ["delete", "d"]:
-        args = [mode, name, imurl]
-        print(args)
-        await ctx.guild.delete_sticker(ctx.message.reference.resolved.stickers[0])
-    else:
-        if imurl:
-            file = str(headers.downimg(imurl))
-            await ctx.guild.create_sticker(name=name, description="temp", emoji="🖕", file=discord.File(file))
-            os.remove(file)
-
 @bot.command()
 async def ttt(ctx):
     await ctx.send(view=TTToe())
 
 @bot.command()
 @commands.is_owner()
-async def sleep(ctx):
-    await ctx.send("Good night")
-    await bot.close()
+async def logai(ctx):
+    with open("myai.json") as file:
+        data = json.load(file)
+    await ctx.send(str(data))
 
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
