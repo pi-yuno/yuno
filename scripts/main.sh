@@ -12,7 +12,7 @@ git checkout -b $BRANCH
 pip install -r requirements.txt
 
 function github_update() {
-    git pull origin master --rebase false
+    git pull --rebase origin master
     git add --all
     git commit -am "schedule ai"
     git push $ORIGIN HEAD:$BRANCH -f
