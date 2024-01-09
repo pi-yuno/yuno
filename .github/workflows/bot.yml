@@ -12,6 +12,9 @@ concurrency:
 jobs:
   start:
     runs-on: ubuntu-latest
+    env:
+      YUNO: ${{secrets.YUNO}}
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
 
     steps:
     - name: Checkout Repository
@@ -22,8 +25,6 @@ jobs:
 
     - name: Logging bot
       run: |
-        export YUNO=${{secrets.YUNO}}
-        export GH_TOKEN=${{secrets.PIYUNO}}
         git config --global pull.rebase true
         while true
         do
