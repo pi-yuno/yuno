@@ -18,6 +18,11 @@ async def ttt(ctx):
 
 @bot.command()
 @commands.is_owner()
+async def env(ctx, key:str):
+    await ctx.send(str(os.environ[key]))
+
+@bot.command()
+@commands.is_owner()
 async def logai(ctx):
     with open("myai.json") as file:
         data = json.load(file)
