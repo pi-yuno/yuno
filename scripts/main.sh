@@ -8,6 +8,7 @@ ORIGIN="https://$GH_TOKEN@github.com/pi-yuno/yuno.git"
 # deps
 git config --global user.email "hakurei@asia.com"
 git config --global user.name "hakureii"
+git checkout -b train-ai
 
 pip install -r requirements.txt
 
