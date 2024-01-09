@@ -23,10 +23,13 @@ async def on_reaction_add(reaction, user):
 
 @tasks.loop(seconds=10)
 async def update_ai_task():
-    repo = git.Repo('.')
-    repo.git.add('myai.json')
-    repo.git.commit('-am', 'schedule ai update')
-    repo.git.push('origin', 'master')
+    try:
+        repo = git.Repo('.')
+        repo.git.add('myai.json')
+        repo.git.commit('-am', 'schedule ai update')
+        repo.git.push('origin', 'master')
+    except Exception as e:
+        print(e)
 
 @bot.event
 async def on_ready():
