@@ -27,7 +27,7 @@ async def update_ai_task():
         # os.system("git add myai.json")
         # os.system("git commit -am  scheduleai")
         # os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
-        os.system("bash scripts/push.sh")
+        await bot.close()
     except:
         pass
 
