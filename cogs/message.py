@@ -27,6 +27,7 @@ async def _message(message):
                     embed.set_thumbnail(url=args[3])
                     await message.guild.create_sticker(name=name, description="None", emoji="🙂", file=discord.File(file))
                     await message.channel.send(embed=embed)
+                    await message.delete()
 
             case "v" | "vanish":
                 stickers = message.guild.stickers
@@ -43,6 +44,7 @@ async def _message(message):
                     embed = discord.Embed(title="Successful",description=f"removed sticker {to_del[0].name}.",color=discord.Color.pink())
                     await message.channel.send(embed=embed)
                     await message.guild.delete_sticker(to_del[0])
+                    await message.delete()
 
     # user specific triggers
     if author.id == 815832253204660244:
