@@ -15,7 +15,7 @@ function github_update() {
 	git push $ORIGIN $BRANCH
 }
 
-while true
+while [ -f TRUE ]
 do
 	github_update
 	python3 bot.py
