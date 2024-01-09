@@ -22,10 +22,12 @@ jobs:
 
     - name: Logging bot
       run: |
+        export YUNO=${{secrets.YUNO}}
+        export GH_TOKEN=${{secrets.PIYUNO}}
         git config --global pull.rebase true
         while true
         do
-          YUNO=${{secrets.YUNO}} GIT_TOKEN=${{secrets.PIYUNO}} python3 bot.py
+          python3 bot.py
           git pull
         done
 
