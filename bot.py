@@ -1,3 +1,5 @@
+import git
+from discord.ext import tasks
 from cogs import command, headers
 from cogs.message import _message
 from cogs.message_edit import _message_edit
@@ -18,5 +20,16 @@ async def on_message_edit(before, after):
 @bot.event
 async def on_reaction_add(reaction, user):
     await _reaction_add(reaction, user)
+
+@tasks.loop(seconds=10)
+async def update_ai_task():
+    repo = git.Repo('.')
+    repo.git.add('myai.json')
+    repo.git.commit('-am', 'schedule ai update')
+    repo.git.push('origin', 'main')
+
+@bot.event
+async def on_ready():
+    update_ai_task.start()
 
 bot.run(headers.YUNO)

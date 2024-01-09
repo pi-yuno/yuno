@@ -1,12 +1,31 @@
 import re
+import json
 import discord
 from cogs import headers
+
+global ai_data
+try:
+    with open("myai.json", "r") as file:
+        ai_data = json.load(file)
+except:
+    ai_data = dict()
 
 async def _message(message):
     # to make convenient
     content = message.content
     author = message.author
     channel = message.channel
+
+    if author.bot:
+        return
+
+    if message.reference:
+        reply_content = message.reference.resolved.content
+        if not message.reference.resolved.author.bot:
+            global ai_data
+            ai_data[str(reply_content.lower())] = str(message.content.lower())
+            with open("myai.json", "w") as file:
+                json.dump(ai_data, file)
 
     # unprefix commands
     if content.lower().startswith("stick"):
