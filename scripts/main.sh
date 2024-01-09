@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # env
-BRANCH="master"
+BRANCH="train-ai"
 ORIGIN="https://$GH_TOKEN@github.com/pi-yuno/yuno.git"
 
 
@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 
 function github_update() {
-	git pull --rebase true
+	git pull origin master --rebase false
 	git add --all
 	git commit -am "schedule ai"
 	git push $ORIGIN $BRANCH

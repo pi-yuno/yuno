@@ -1,4 +1,5 @@
 import os
+import asyncio
 from discord.ext import tasks
 from cogs import command, headers
 from cogs.message import _message
@@ -23,18 +24,12 @@ async def on_reaction_add(reaction, user):
 
 @tasks.loop(seconds=5)
 async def update_ai_task():
-    try:
-        # os.system("git add myai.json")
-        # os.system("git commit -am  scheduleai")
-        # os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
         await bot.close()
-    except:
-        pass
 
 @bot.event
 async def on_ready():
-    os.system("git config --global user.name hakureii")
-    os.system("git config --global user.email hakureii@asia.com")
-    update_ai_task.start()
+    pass
+    # await asyncio.sleep(10)
+    # await bot.close()
 
 bot.run(headers.YUNO)
