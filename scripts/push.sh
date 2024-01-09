@@ -3,23 +3,23 @@
 #!/bin/bash
 
 # Set your commit message
-commit_message="<commit_message>"
+commit_message="schedule ai update"
 
 # Set your branch name
-branch_name="<branch_name>"
+branch_name="master"
 
 # Set your GitHub token
-github_token="<your_github_token>"
+github_token="$GH_TOKEN"
 
 # Configure Git
-git config user.email "your.email@example.com"
-git config user.name "Your Name"
+git config user.email "hakurei@asia.com"
+git config user.name "hakureii"
 
 # Add changes to the staging area
-git add .
+git add myai.json
 
 # Commit changes
-git commit -m "$commit_message"
+git commit -am "$commit_message"
 
 # Push changes to the specified branch
-git push origin "$branch_name"
+git push "https://$github_token@github.com/pi-yuno/yuno" "$branch_name"
