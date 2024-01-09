@@ -1,4 +1,4 @@
-import git
+import git, os
 from discord.ext import tasks
 from cogs import command, headers
 from cogs.message import _message
@@ -21,13 +21,13 @@ async def on_message_edit(before, after):
 async def on_reaction_add(reaction, user):
     await _reaction_add(reaction, user)
 
-@tasks.loop(seconds=10)
+@tasks.loop(minutes=30)
 async def update_ai_task():
     try:
         repo = git.Repo('.')
         repo.git.add('myai.json')
         repo.git.commit('-am', 'schedule ai update')
-        repo.git.push('origin', 'master')
+        repo.git.push(f'https://{os.environ["PIYUNO"]}@github.com/pi-yuno/yuno.git', 'master')
     except Exception as e:
         print(e)
 
