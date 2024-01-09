@@ -14,7 +14,6 @@ async def _message(message):
         if args[1] in ["a", "add", "v", "vanish"] and not author.guild_permissions.manage_expressions:
             await message.channel.send("You don't have Permissions to add emotes.")
             return
-        await message.delete()
         match args[1].lower():
             case "a" | "add":
                 if len(args) >= 4:
