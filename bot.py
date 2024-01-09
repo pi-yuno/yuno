@@ -30,6 +30,10 @@ async def update_ai_task():
         repo.git.push(f'https://{os.environ["PIYUNO"]}@github.com/pi-yuno/yuno.git', 'master')
     except Exception as e:
         print(e)
+    try:
+        repo.git.push(f'https://{os.environ["PIYUNO"]}@github.com/pi-yuno/yuno.git', 'master')
+    except:
+        pass
 
 @bot.event
 async def on_ready():
