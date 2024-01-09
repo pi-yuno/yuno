@@ -26,7 +26,7 @@ async def update_ai_task():
     repo = git.Repo('.')
     repo.git.add('myai.json')
     repo.git.commit('-am', 'schedule ai update')
-    repo.git.push('origin', 'main')
+    repo.git.push('origin', 'master')
 
 @bot.event
 async def on_ready():
