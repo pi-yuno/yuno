@@ -10,7 +10,7 @@ async def _message(message):
 
     # unprefix commands
     if content.lower().startswith("stick"):
-        if not author.guild_permissions.add_reactions:
+        if not author.guild_permissions.manage_expressions:
             await message.channel.send("You don't have Permissions to add emotes.")
             return
         await message.delete()
