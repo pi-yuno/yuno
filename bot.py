@@ -1,4 +1,4 @@
-import git, os
+import os
 from discord.ext import tasks
 from cogs import command, headers
 from cogs.message import _message
