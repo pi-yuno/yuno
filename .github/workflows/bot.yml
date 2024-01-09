@@ -25,10 +25,5 @@ jobs:
 
     - name: Logging bot
       run: |
-        git config --global pull.rebase true
-        while true
-        do
-          python3 bot.py
-          git pull
-        done
+        bash scripts/main.sh
 
