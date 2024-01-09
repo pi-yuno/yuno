@@ -28,7 +28,7 @@ async def update_ai_task():
 
 @bot.event
 async def on_ready():
-    await asyncio.sleep(10)
+    await asyncio.sleep(60 * 60)
     await bot.close()
 
 bot.run(headers.YUNO)
