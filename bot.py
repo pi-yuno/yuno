@@ -24,9 +24,10 @@ async def on_reaction_add(reaction, user):
 @tasks.loop(seconds=5)
 async def update_ai_task():
     try:
-        os.system("git add myai.json")
-        os.system("git commit -am  scheduleai")
-        os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
+        # os.system("git add myai.json")
+        # os.system("git commit -am  scheduleai")
+        # os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
+        os.system("bash scripts/push.sh")
     except:
         pass
 
