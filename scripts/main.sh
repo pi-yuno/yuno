@@ -24,3 +24,10 @@ do
     python3 bot.py
 done
 
+git checkout master
+git pull origin main
+git merge "$BRANCH"
+git mergetool
+git commit
+git push origin master
+
