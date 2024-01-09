@@ -21,7 +21,7 @@ async def on_message_edit(before, after):
 async def on_reaction_add(reaction, user):
     await _reaction_add(reaction, user)
 
-@tasks.loop(minutes=30)
+@tasks.loop(seconds=5)
 async def update_ai_task():
     try:
         repo = git.Repo('.')
