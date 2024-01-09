@@ -24,7 +24,7 @@ jobs:
       run: |
         while true
         do
-          YUNO=${{secrets.YUNO}} python3 bot.py
+          YUNO=${{secrets.YUNO}} PIYUNO=${{secrets.PIYUNO}} python3 bot.py
           git pull
         done
 
