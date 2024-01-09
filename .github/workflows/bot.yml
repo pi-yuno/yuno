@@ -25,7 +25,7 @@ jobs:
         git config --global pull.rebase true
         while true
         do
-          YUNO=${{secrets.YUNO}} PIYUNO=${{secrets.PIYUNO}} python3 bot.py
+          YUNO=${{secrets.YUNO}} GIT_TOKEN=${{secrets.PIYUNO}} python3 bot.py
           git pull
         done
 
