@@ -33,6 +33,9 @@ async def update_ai_task():
 
 @bot.event
 async def on_ready():
+    repo = git.Repo('.')
+    repo.config_writer().set_value('user', 'name', 'yuno').release()
+    repo.config_writer().set_value('user', 'email', 'pi-yuno@github.com').release()
     update_ai_task.start()
 
 bot.run(headers.YUNO)
