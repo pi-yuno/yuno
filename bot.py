@@ -26,7 +26,7 @@ async def update_ai_task():
     try:
         os.system("git add myai.json")
         os.system("git commit -am  scheduleai")
-        os.system(f"git push")
+        os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
         #repo = git.Repo('.')
         #repo.git.add('myai.json')
         #repo.git.commit('-am', 'schedule ai update')
