@@ -27,23 +27,13 @@ async def update_ai_task():
         os.system("git add myai.json")
         os.system("git commit -am  scheduleai")
         os.system("git push https://$GH_TOKEN@github.com/pi-yuno/yuno.git master")
-        #repo = git.Repo('.')
-        #repo.git.add('myai.json')
-        #repo.git.commit('-am', 'schedule ai update')
-        #repo.git.push(f'https://{os.environ["PIYUNO"]}@github.com/pi-yuno/yuno.git', 'master')
-    except Exception as e:
-        pass
-        #print(e)
-    try:
-        pass
-        #repo.git.push(f'https://{os.environ["PIYUNO"]}@github.com/pi-yuno/yuno.git', 'master')
     except:
         pass
 
 @bot.event
 async def on_ready():
-    os.system("git config --global user.name yuno")
-    os.system("git config --global user.email pi-yuno@github.com")
+    os.system("git config --global user.name hakureii")
+    os.system("git config --global user.email hakureii@asia.com")
     # repo = git.Repo('.')
     # repo.config_writer().set_value('user', 'name', 'yuno').release()
     # repo.config_writer().set_value('user', 'email', 'pi-yuno@github.com').release()
