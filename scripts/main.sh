@@ -15,4 +15,9 @@ function github_update() {
 	git push $ORIGIN $BRANCH
 }
 
-github_update
+while true
+do
+	github_update
+	python3 bot.py
+done
+
