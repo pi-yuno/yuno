@@ -2,7 +2,7 @@
 
 # env
 BRANCH="master"
-ORIGIN="https://GH_TOKEN@github.com/pi-yuno/yuno.git"
+ORIGIN="https://$GH_TOKEN@github.com/pi-yuno/yuno.git"
 
 pip install -r requirements.txt
 
