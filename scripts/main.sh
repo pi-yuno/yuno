@@ -15,7 +15,7 @@ function github_update() {
     git pull origin master --rebase false
     git add --all
     git commit -am "schedule ai"
-    git push $ORIGIN HEAD:$BRANCH
+    git push $ORIGIN HEAD:$BRANCH -f
 }
 
 while true
