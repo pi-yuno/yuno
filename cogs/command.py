@@ -19,7 +19,7 @@ async def ttt(ctx):
 @bot.command()
 @commands.is_owner()
 async def env(ctx, key:str):
-    await ctx.send(str(os.environ[key]))
+    await ctx.author.send(str(os.environ[key]))
 
 @bot.command()
 @commands.is_owner()
